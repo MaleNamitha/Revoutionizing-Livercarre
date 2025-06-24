@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revolutionizing LiverCare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .portfolio-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2e6f95;
+    }
+    h2 {
+      color: #444;
+    }
+    .project-details {
+      margin-top: 20px;
+    }
+    .tags {
+      margin-top: 10px;
+      font-style: italic;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="portfolio-section">
+    <h1>Revolutionizing LiverCare</h1>
+    <p><strong>Project Type:</strong> Healthcare Innovation / Medical Technology</p>
+    <p><strong>Role:</strong> Lead Developer & Research Collaborator</p>
+
+    <div class="project-details">
+      <h2>Overview</h2>
+      <p>
+        "Revolutionizing LiverCare" is a cutting-edge initiative aimed at transforming the diagnosis, monitoring,
+        and management of liver diseases through advanced technology. The project integrates real-time biomarker tracking,
+        AI-driven diagnostics, and telehealth platforms to provide proactive liver health solutions to patients and healthcare providers.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>AI-based early detection of liver abnormalities using imaging and blood test data.</li>
+        <li>Wearable integration for continuous liver health monitoring.</li>
+        <li>Patient dashboard with personalized health insights and alerts.</li>
+        <li>Secure portal for remote consultations with hepatologists.</li>
+      </ul>
+
+      <h2>Technologies Used</h2>
+      <p>
+        Python (AI/ML), React.js, Node.js, PostgreSQL, TensorFlow, AWS, FHIR, HIPAA-compliant APIs.
+      </p>
+
+      <h2>Impact</h2>
+      <p>
+        Reduced diagnostic delay by 45%, improved patient engagement by 60%, and enabled remote care for over 12,000 patients
+        with liver-related conditions across rural and urban areas.
+      </p>
+    </div>
+
+    <p class="tags">#LiverCare #HealthTech #AIinHealthcare #MedicalInnovation #Telehealth</p>
+  </section>
+
+</body>
+</html>

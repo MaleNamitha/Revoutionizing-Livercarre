@@ -1,0 +1,35 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form.get('name')
+    symptom = request.form.get('symptom')
+
+    advice = get_advice(symptom)
+
+    return f"""
+    <h2>Hello, {name}!</h2>
+    <p>You reported: <strong>{symptom}</strong></p>
+    <p>?? Suggested advice: {advice}</p>
+    <a href="/">Go Back</a>
+    """
+
+def get_advice(symptom):
+    symptom = symptom.lower()
+    if 'jaundice' in symptom:
+        return "See a doctor immediately – jaundice is a serious liver warning sign."
+    elif 'fatigue' in symptom:
+        return "Chronic fatigue can be linked to liver issues. Stay hydrated and rest. Consider testing."
+    elif 'nausea' in symptom:
+        return "Monitor your symptoms – could be liver-related. Avoid heavy food and alcohol."
+    else:
+        return "Keep monitoring. If symptoms persist, visit a healthcare provider."
+
+if __name__ == '__main__':
+    app.run(debug=True)

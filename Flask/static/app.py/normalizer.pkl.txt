@@ -1,0 +1,12 @@
+import pickle
+import numpy as np
+
+# Load the normalizer
+with open('normalizer.pkl', 'rb') as f:
+    normalizer = pickle.load(f)
+
+# Example new user input
+user_input = np.array([[30, 200]])  # e.g., age, ALT level
+
+# Normalize input
+normalized_input = normalizer.transform(user_input)

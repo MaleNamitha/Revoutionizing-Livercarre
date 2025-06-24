@@ -1,0 +1,5 @@
+import pickle
+
+# Load the model
+with open('rc_acc_68.pkl', 'rb') as f:
+    model = pickle.load(f)
