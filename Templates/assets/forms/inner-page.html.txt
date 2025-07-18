@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolutionizing LiverCare | Inner Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional external CSS -->
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+        }
+        header, footer {
+            background-color: #003366;
+            color: #fff;
+            padding: 1em 2em;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1em;
+            text-decoration: none;
+        }
+        .hero {
+            background: url('livercare-banner.jpg') center/cover no-repeat;
+            padding: 100px 20px;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            padding: 2em;
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #003366;
+        }
+        .cta {
+            background-color: #006699;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            margin-top: 2em;
+        }
+        .cta a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Revolutionizing LiverCare</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="innerpage.html">Project Details</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h2>Pioneering Liver Health Through Innovation</h2>
+    <p>Transforming diagnostics, monitoring, and care with AI, biotech, and patient-centered solutions.</p>
+</div>
+
+<div class="container">
+    <section>
+        <h2>About the Project</h2>
+        <p>
+            The "Revolutionizing LiverCare" project is an interdisciplinary initiative aimed at early detection, proactive care, and better outcomes in liver disease management.
+            Combining advanced imaging, AI analytics, wearable biosensors, and predictive modeling, we're redefining how liver health is understood and treated.
+        </p>
+    </section>
+
+    <section>
+        <h2>Core Technologies</h2>
+        <ul>
+            <li>AI-Powered Liver Diagnostic Tools</li>
+            <li>Non-invasive Biomarker Monitoring Devices</li>
+            <li>Predictive Patient Health Modeling</li>
+            <li>Telehealth and Digital Health Records Integration</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Collaborators</h2>
+        <p>
+            In partnership with global research institutions, liver specialists, and healthcare tech startups, our mission is supported by a network of innovators and clinicians.
+        </p>
+    </section>
+
+    <section>
+        <h2>Impact</h2>
+        <p>
+            We're reducing the time to diagnosis, increasing treatment precision, and helping patients manage liver conditions with real-time, personalized insights.
+        </p>
+    </section>
+
+    <div class="cta">
+        <p>Interested in learning more or collaborating? <a href="contact.html">Get in touch with us</a>.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Revolutionizing LiverCare Initiative. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

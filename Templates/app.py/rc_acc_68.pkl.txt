@@ -1,0 +1,10 @@
+from sklearn.ensemble import RandomForestClassifier
+import pickle
+
+# Example model training (on liver-related dataset)
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Save model with accuracy info
+with open('rc_acc_68.pkl', 'wb') as f:
+    pickle.dump(model, f)
