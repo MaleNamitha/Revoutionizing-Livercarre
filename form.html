@@ -1,90 +1,180 @@
-<!DOCTYPE html><html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LiverCare | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LiverCare | Prediction Form</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }header, footer {
-  background: #003366;
-  color: white;
-  padding: 1em;
-  text-align: center;
-}
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
+    }
 
-nav a {
-  color: #fff;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
+    header {
+      background-color: #003366;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
 
-nav a:hover {
-  text-decoration: underline;
-}
+    nav {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
-  text-align: center;
-  background: linear-gradient(135deg, #0288d1, #26c6da);
-  color: white;
-  padding: 20px;
-}
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+    }
 
-.hero h1 {
-  font-size: 3em;
-  margin-bottom: 0.5em;
-}
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-.hero p {
-  font-size: 1.2em;
-  max-width: 600px;
-}
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
 
-.buttons {
-  margin-top: 30px;
-}
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
 
-.buttons a {
-  text-decoration: none;
-  color: white;
-  background-color: #00695c;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 5px;
-  font-size: 1em;
-}
+    label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #444;
+    }
 
-.buttons a:hover {
-  background-color: #004d40;
-}
+    input[type="number"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: #eaf8fa;
+    }
 
+    input[type="submit"] {
+      grid-column: 1 / -1;
+      padding: 14px;
+      background: #0288d1;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #005577;
+    }
+
+    .result {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .result.success {
+      background-color: #d0f5d8;
+      color: #256029;
+    }
+
+    .result.danger {
+      background-color: #ffe0e0;
+      color: #a71d2a;
+    }
+
+    .speak-btn {
+      margin-left: 12px;
+      background: #0288d1;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
+
+  <script>
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(msg);
+    }
+  </script>
 </head>
 <body>
+
   <header>
-    <h1>LiverCare</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/form">Prediction Form</a>
-      <a href="/portfolio">Portfolio</a>
-    </nav>
-  </header>  <section class="hero">
-    <h1>Welcome to LiverCare</h1>
-    <p>Revolutionizing liver disease prediction and care through AI and modern healthcare innovations.</p>
-    <div class="buttons">
-      <a href="/form">Start Prediction</a>
-      <a href="/portfolio">View Portfolio</a>
-    </div>
-  </section>  <footer>
-    <p>&copy; 2025 LiverCare - All Rights Reserved</p>
-  </footer>
+    <h1>LiverCare - Cirrhosis Prediction</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="form.html">Prediction Form</a>
+    <a href="portfolio.html">Portfolio</a>
+  </nav>
+
+  <div class="container">
+    <h2>Enter Patient Details</h2>
+    <form method="POST" action="/predict">
+<label for="patient_name">👤 Name of Patient:</label>
+<input type="text" name="patient_name" required />
+      <label for="age">👤 Age:</label>
+      <input type="number" name="age" step="any" required />
+
+      <label for="bilirubin">💧 Bilirubin:</label>
+      <input type="number" name="bilirubin" step="any" required />
+
+      <label for="alk_phosphate">🧪 Alkaline Phosphate:</label>
+      <input type="number" name="alk_phosphate" step="any" required />
+
+      <label for="sgpt">🧫 SGPT:</label>
+      <input type="number" name="sgpt" step="any" required />
+
+      <label for="sgot">🧬 SGOT:</label>
+      <input type="number" name="sgot" step="any" required />
+
+      <label for="proteins">🧬 Proteins:</label>
+      <input type="number" name="proteins" step="any" required />
+
+      <label for="albumin">⚛️ Albumin:</label>
+      <input type="number" name="albumin" step="any" required />
+
+      <label for="ag_ratio">⚖️ A/G Ratio:</label>
+      <input type="number" name="ag_ratio" step="any" required />
+
+      <input type="submit" value="Predict" />
+
+      {% if prediction %}
+  <h3 style="margin-top: 20px; color: green;">
+    🩺 Prediction Result for {{ patient_name }}: {{ prediction }}
+  </h3>
+{% endif %}
+    </form>
+  </div>
 </body>
 </html>
