@@ -1,36 +1,51 @@
-from flask import Flask, render_template_string, request
+
+from flask import Flask, render_template, request
 import numpy as np
 import pickle
 
-app = Flask(__name__)
+app = Flask(_name_)
 
-# Load model and scaler
-with open("normalizer.pkl", "rb") as f:
-    scaler = pickle.load(f)
+# Load scaler and model once at startup
+scaler = pickle.load(open('normalizer.pkl', 'rb'))
+model = pickle.load(open('rc_acc_68.pkl', 'rb'))
 
-with open("rc_acc_68.pkl", "rb") as f:
-    model = pickle.load(f)
-
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template_string(open("templates/index.html").read())
+    return render_template('index.html')
 
-@app.route("/portfolio")
+@app.route('/form')
+def form():
+    return render_template('form.html')
+
+@app.route('/portfolio')
 def portfolio():
-    return render_template_string(open("templates/portfolio.html").read())
+    return render_template('portfolio.html')
 
-@app.route("/predict", methods=["GET", "POST"])
+@app.route('/predict', methods=['POST'])
 def predict():
-    result = None
-    if request.method == "POST":
-        try:
-            vals = [float(request.form[k]) for k in ["ALT", "AST", "ALP", "Bilirubin", "Albumin", "Age"]]
-            norm_vals = scaler.transform([vals])
-            pred = model.predict(norm_vals)[0]
-            result = "⚠️ Likely Liver Disease" if pred == 1 else "✅ Healthy Liver"
-        except:
-            result = "Invalid input"
-    return render_template_string(open("templates/form.html").read(), result=result)
+    try:
+        name = request.form['name']
+        age = float(request.form['age'])
+        bilirubin = float(request.form['bilirubin'])
+        alk_phosphate = float(request.form['alk_phosphate'])
+        sgpt = float(request.form['sgpt'])
+        sgot = float(request.form['sgot'])
+        proteins = float(request.form['proteins'])
+        albumin = float(request.form['albumin'])
+        ag_ratio = float(request.form['ag_ratio'])
 
-if __name__ == "__main__":
+        # Arrange in order expected by scaler/model
+        input_data = np.array([[sgpt, sgot, alk_phosphate, bilirubin, albumin, age]])
+        scaled_input = scaler.transform(input_data)
+
+        # Make prediction
+        prediction_raw = model.predict(scaled_input)[0]
+        prediction = "🟢 No Liver Disease Detected" if prediction_raw == 0 else "🔴 Liver Disease Detected"
+
+        return render_template('form.html', prediction=prediction, patient_name=name)
+    
+    except Exception as e:
+        return render_template('form.html', prediction="❌ Error during prediction: " + str(e), patient_name="")
+
+if _name_ == '_main_':
     app.run(debug=True)
